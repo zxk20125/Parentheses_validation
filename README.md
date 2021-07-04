@@ -1,14 +1,14 @@
 # parentheses_validation
 
-A Clojure library designed to ... well, that part is up to you.
+Given a string **s** containing just the characters '(', ')', '{', '}', '[' and ']', to validate if the input strings is vaild.
 
 ## Usage
 
-FIXME
+![sample](C:\Users\asuas\Desktop\Parentheses_validation\parentheses_validation\sample.png)
 
 ## License
 
-Copyright © 2021 FIXME
+Copyright © 2021 Kenny
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
