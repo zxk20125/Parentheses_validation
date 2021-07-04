@@ -1,23 +1,19 @@
 (ns parentheses-validation.core
 (:gen-class))
-
-(defn process [x]
+(defn process
+  [x]
 	(def r(re-matches #"\(.*\)|\{.*\}|\[.*\]" x))
-	(if (not(nil? r)) (do 
-	(def res(subs r 1 (-(count r) 1)))
-	(process res)))
-	(if(= res "")(def ret true)
+	(if (not(nil? r))
+	(do(def res(subs r 1 (-(count r) 1)))(if (= res "")(def ret true)(process res)))
 	(def ret false)))
 	
+	
 (defn pre_process[x]
-  (def str(clojure.string/replace x #"\(\)|\{\}|\[\]"  ""))
-  (println str)
-  (if(not(= str "")) (process str)))
+	(def re(clojure.string/replace x #"\(\)|\{\}|\[\]"  ""))
+	(if(not(= re "")) (process re)(def ret true)))
   
 
 (defn -main
   [x]
-  (def str x)
-  (def ret true)
-  (pre_process str)
+  (pre_process x)
   (println "input:"x "output:"ret))

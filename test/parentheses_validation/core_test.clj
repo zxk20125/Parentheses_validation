@@ -2,6 +2,22 @@
   (:require [clojure.test :refer :all]
             [parentheses-validation.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest fun-test
+	(testing "testing: ()"
+	(parentheses-validation.core/pre_process "()")
+	(is(= true parentheses-validation.core/ret)));
+	(testing "testing: ()[]{}"
+	(parentheses-validation.core/pre_process "()[]{}")
+	(is(= true parentheses-validation.core/ret)));
+	(testing "testing: ([)]"
+	(parentheses-validation.core/pre_process "([)]")
+	(is(= false parentheses-validation.core/ret)));
+	(testing "testing: {[]}"
+	(parentheses-validation.core/pre_process "{[]}")
+	(is(= true parentheses-validation.core/ret)));
+	(testing "testing: (]"
+	(parentheses-validation.core/pre_process "(]")
+	(is(= false parentheses-validation.core/ret)))
+	(testing "testing: {[}]()"
+	(parentheses-validation.core/pre_process "{[}]()")
+	(is(= false parentheses-validation.core/ret))))
